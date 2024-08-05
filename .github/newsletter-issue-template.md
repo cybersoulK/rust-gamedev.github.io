@@ -102,7 +102,9 @@ but here are the most important rules:
 - Only one image per section is allowed.
   - The maximum size is 300kb for static images and 2.5mb for GIFs.
   - The image should come before the text, and must have alt text for accessibility.
-  - Prefer static images to GIFs, to keep the page load times down.
+  - Prefer static images to GIFs/videos, to keep the page load times down.
+  - To include a video, encode it as `H.264` in an `mp4` container and use
+    the `video_figure()` shortcode; videos autoplay in a loop (muted).
 - Each section should be under 1000 characters, and under 6 paragraphs.
   - This only applies to the rendered text, not the markup.
 - Keep formatting minimal - no bold/italics/etc.
@@ -115,8 +117,17 @@ Please use these templates as a starting point:
 ```md
 ### [Game name]
 
-![alt text](img)
-_optional image label_
+{{ image_figure(
+    alt="image/GIF description",
+    src="image link",
+    caption="image caption") }}
+
+OR
+
+{{ video_figure(
+    type="video/mp4", 
+    src="my-video.mp4", 
+    caption="optional video caption") }}
 
 [Game name] ([GitHub], [Discord], [Twitter]) by [@nickname]
 is... {short project description in one sentence}.
@@ -133,8 +144,17 @@ _Discussions: [/r/rust_gamedev](link), [Twitter](link), [etc](link)_
 ```md
 ### [Article name]
 
-![alt text](img)
-_optional image label_
+{{ image_figure(
+    alt="image/GIF description",
+    src="image link",
+    caption="image caption") }}
+
+OR
+
+{{ video_figure(
+    type="video/mp4", 
+    src="my-video.mp4", 
+    caption="optional video caption") }}
 
 [@nickname] published an [article] about...
 {overview what the resource is about}.

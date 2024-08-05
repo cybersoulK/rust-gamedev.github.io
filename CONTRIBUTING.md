@@ -2,10 +2,13 @@
 
 Thank you for contributing to the newsletter! 💖
 
-- [Writing Newsletter Sections](#writing-newsletter-sections)
-  - [Templates](#templates)
-  - [Style Guidelines](#style-guidelines)
-- [Becoming an Editor](#becoming-an-editor)
+- [Contributing Guide](#contributing-guide)
+  - [Writing Newsletter Sections](#writing-newsletter-sections)
+    - [Templates](#templates)
+      - [Games, Apps or Libraries](#games-apps-or-libraries)
+      - [Articles, Blog Posts or Videos](#articles-blog-posts-or-videos)
+    - [Style Guidelines](#style-guidelines)
+  - [Becoming an Editor](#becoming-an-editor)
 
 ## Writing Newsletter Sections
 
@@ -53,8 +56,17 @@ your GitHub notifications for any further review comments from the editors.
 ```md
 ### [Game name]
 
-![alt text](img)
-_optional image label_
+{{ image_figure(
+    alt="image/GIF description",
+    src="image link",
+    caption="image caption") }}
+
+OR
+
+{{ video_figure(
+    type="video/mp4", 
+    src="my-video.mp4", 
+    caption="optional video caption") }}
 
 [Game name] ([GitHub], [Discord], [Twitter]) by [@nickname]
 is... {short project description in one sentence}.
@@ -71,8 +83,17 @@ _Discussions: [/r/rust_gamedev](link), [Twitter](link), [etc](link)_
 ```md
 ### [Article name]
 
-![alt text](img)
-_optional image label_
+{{ image_figure(
+    alt="image/GIF description",
+    src="image link",
+    caption="image caption") }}
+
+OR
+
+{{ video_figure(
+    type="video/mp4", 
+    src="my-video.mp4", 
+    caption="optional video caption") }}
 
 [@nickname] published an [article] about...
 {overview what the resource is about}.
@@ -96,11 +117,13 @@ _Discussions: [/r/rust_gamedev](link), [Twitter](link), [etc](link)_
 - Avoid having multiple/nested bullet points.
   - This guideline may be relaxed if your project has multiple parts that
     aren't independent enough for their own sections.
-- Only include one image (<300kb) or GIF (<2.5mb).
+- Only include one image (<300kb), GIF (<2.5mb) or video (<2.5mb).
   - Images should be placed before text, with an optional caption and
     mandatory alternate text for accessibility.
   - Unless essential to demonstrating your project, prefer static images
-    over GIFs, to keep the file size down.
+    over GIFs/videos, to keep the file size down.
+  - To include a video, encode it as `H.264` in an `mp4` container and use
+    the `video_figure()` shortcode; videos autoplay in a loop (muted).
 - Use singular 'they' if you’re not sure what someone's pronouns are.
 - If a project has been featured in previous newsletters, try to focus on
   what's new rather than repeating previous content.
